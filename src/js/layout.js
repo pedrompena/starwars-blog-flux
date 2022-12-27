@@ -1,37 +1,55 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+//Context
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+//Views
+import { Home } from "./views/Home";
+import { Films } from "./views/Films";
+import { FilmsDetails } from "./views/FilmsDetails";
+import { People } from "./views/People";
+import { PeopleDetails } from "./views/PeopleDetails";
+import { Planets } from "./views/Planets";
+import { PlanetsDetails } from "./views/PlanetsDetails";
+import { Species } from "./views/Species";
+import { SpeciesDetails } from "./views/SpeciesDetails";
+import { Starships } from "./views/Starships";
+import { StarshipsDetails } from "./views/StarshipsDetails";
+import { Vehicles } from "./views/Vehicles";
+import { VehiclesDetails } from "./views/VehiclesDetails";
 
-//create your first component
+//Components
+import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
+
 const Layout = () => {
-	//the basename is used when your project is published in a subdirectory and not in the root of the domain
-	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
-	const basename = process.env.BASENAME || "";
+  const basename = process.env.BASENAME || "";
 
-	return (
-		<div>
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar />
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/demo" element={<Demo />} />
-						<Route path="/single/:theid" element={<Single />} />
-						<Route path="*" element={<h1>Not found!</h1>} />
-					</Routes>
-					<Footer />
-				</ScrollToTop>
-			</BrowserRouter>
-		</div>
-	);
+  return (
+    <div>
+      <BrowserRouter basename={basename}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/films" element={<Films />} />
+          <Route path="/films/:filmID" element={<FilmsDetails />} />
+          <Route path="/characters" element={<People />} />
+          <Route path="/characters/:peopleID" element={<PeopleDetails />} />
+          <Route path="/planets" element={<Planets />} />
+          <Route path="/planets/:planetID" element={<PlanetsDetails />} />
+          <Route path="/species" element={<Species />} />
+          <Route path="/species/:specieID" element={<SpeciesDetails />} />
+          <Route path="/starships" element={<Starships />} />
+          <Route path="/starships/:starshipID" element={<StarshipsDetails />} />
+          <Route path="/vehicles" element={<Vehicles />} />
+          <Route path="/vehicles/:vehicleID" element={<VehiclesDetails />} />
+          <Route path="*" element={<h1>Not found!</h1>} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </div>
+  );
 };
 
 export default injectContext(Layout);

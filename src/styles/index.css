@@ -1,3 +1,16 @@
-/* 
-    General Styles
-*/
+body {
+    background-color: rgb(55, 55, 55);
+    overflow-x: hidden;
+}
+
+nav, .card {
+    box-shadow: 2px 2px 5px rgb(0, 0, 0, 0.5);
+}
+
+.card-img-overlay{
+    background-color: rgb(33,37,41, 0.5);
+}
+
+.card-img-overlay:hover{
+    filter: brightness(1.2);
+}
